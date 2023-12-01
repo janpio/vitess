@@ -1,8 +1,6 @@
 name: Docker Build vttestserver
 on:
   push:
-    branches:
-      - '*'
 
 permissions: read-all
 
