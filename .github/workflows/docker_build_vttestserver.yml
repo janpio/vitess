@@ -6,7 +6,7 @@ permissions: read-all
 
 jobs:
   build_and_push:
-    name: Build and push vitess/vttestserver Docker images
+    name: Build and push janpio/vttestserver Docker images
     runs-on: ubuntu-latest
     
     strategy:
@@ -34,7 +34,7 @@ jobs:
           context: .
           file: ${{ env.DOCKERFILE }}
           push: true
-          tags: vitess/vttestserver:${{ matrix.branch }}
+          tags: janpio/vttestserver:${{ matrix.branch }}
 
       - name: Get the Git tag
         if: startsWith(github.ref, 'refs/tags/')
@@ -43,7 +43,7 @@ jobs:
       - name: Set Docker tag name
         if: startsWith(github.ref, 'refs/tags/')
         run: |
-          echo "DOCKER_TAG=vitess/vttestserver:${TAG_NAME}-${{ matrix.branch }}" >> $GITHUB_ENV
+          echo "DOCKER_TAG=janpio/vttestserver:${TAG_NAME}-${{ matrix.branch }}" >> $GITHUB_ENV
 
       - name: Build and push on tags
         if: startsWith(github.ref, 'refs/tags/')
