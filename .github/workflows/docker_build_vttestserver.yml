@@ -4,10 +4,6 @@ on:
     branches:
       - '*'
 
-concurrency:
-  group: format('{0}-{1}', ${{ github.ref }}, 'Docker Build vttestserver')
-  cancel-in-progress: true
-
 permissions: read-all
 
 jobs:
@@ -35,7 +31,6 @@ jobs:
           echo "DOCKERFILE=./docker/vttestserver/Dockerfile.${{ matrix.branch }}" >> $GITHUB_ENV
 
       - name: Build and push on main
-        if: github.ref == 'refs/heads/main'
         uses: docker/build-push-action@v5
         with:
           context: .
