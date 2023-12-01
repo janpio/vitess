@@ -386,7 +386,7 @@ func CreateKs(
 
 	// vschema for the keyspace
 	if schemaDir != "" {
-		f := path.Join(schemaDir, keyspace, "vschema.json")
+		f := path.Join(schemaDir, "managed", "vschema.json")
 		if _, err := os.Stat(f); err == nil {
 			// load the vschema
 			formal, err := vindexes.LoadFormalKeyspace(f)
